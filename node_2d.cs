@@ -8,6 +8,6 @@ public partial class node_2d : Node2D
 	{
 		var cursor = ResourceLoader.Load<CompressedTexture2D>("res://Pointer2x.png");
 
-		Input.SetCustomMouseCursor(cursor);
+		Input.SetCustomMouseCursor(cursor, Input.CursorShape.Arrow, new Vector2(cursor.GetWidth() / 2, cursor.GetHeight() / 2));
 	}
 }

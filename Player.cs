@@ -1,41 +1,13 @@
 using Godot;
 using System;
 
-public partial class Player : CharacterBody2D
+public partial class Player : Character
 {
-	private const float Gravity = 200.0f;
-	private const int WalkSpeed = 50;
-
-	private AnimatedSprite2D animationSprite;
-	// private AnimationPlayer animationPlayer;
-
-	enum PlayerMovementStateEnum
-	{
-		Idle,
-		Walking,
-		Aiming
-	}
-
-	enum PlayerCurrentWeaponEnum
-	{
-		None,
-		Pistol,
-		Uzi,
-		Minigun,
-		Shotgun,
-		Bazooka,
-		Missile
-	}
-
-	private PlayerMovementStateEnum playerMovementState = PlayerMovementStateEnum.Idle;
-	private PlayerCurrentWeaponEnum playerWeaponState = PlayerCurrentWeaponEnum.Pistol;
-	private int orientation = -1;
-
 	// Number of sectors
-	private int numSectors = 10;
+	private static readonly int numSectors = 10;
 
 	// Calculate the size of each sector in radians
-	private float sectorSize = (2 * Mathf.Pi) / 10;
+	private readonly float sectorSize = 2 * Mathf.Pi / numSectors;
 
 	// Check if a given radian value falls into a sector
 	public int GetSector(float radianValue)
@@ -50,13 +22,12 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		base._Ready();
-
-		animationSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		// animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		base._PhysicsProcess(delta);
+
 		var velocity = Velocity;
 
 		velocity.Y += (float)delta * Gravity;
@@ -65,36 +36,36 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.X = -WalkSpeed;
 
-			playerMovementState = PlayerMovementStateEnum.Walking;
+			characterMovementState = CharacterMovementStateEnum.Walking;
 			orientation = -1;
 		}
 		else if (Input.IsActionPressed("right"))
 		{
 			velocity.X = WalkSpeed;
 
-			playerMovementState = PlayerMovementStateEnum.Walking;
+			characterMovementState = CharacterMovementStateEnum.Walking;
 			orientation = 1;
 		}
 		else
 		{
-			playerMovementState = PlayerMovementStateEnum.Idle;
+			characterMovementState = CharacterMovementStateEnum.Idle;
 
 			velocity.X = 0;
 		}
 
 		string animationSuffix = "";
 
-		switch (playerWeaponState)
+		switch (characterWeaponState)
 		{
-			case PlayerCurrentWeaponEnum.None:
+			case CharacterCurrentWeaponEnum.None:
 				animationSuffix = "";
 				break;
-			case PlayerCurrentWeaponEnum.Pistol:
+			case CharacterCurrentWeaponEnum.Pistol:
 				animationSuffix = "_pistol";
 				break;
 		}
 
-		if (playerMovementState == PlayerMovementStateEnum.Walking)
+		if (characterMovementState == CharacterMovementStateEnum.Walking)
 		{
 			if (velocity.X < 0)
 			{
@@ -107,7 +78,7 @@ public partial class Player : CharacterBody2D
 				animationSprite.Offset = new Godot.Vector2(0, 0);
 			}
 		}
-		else if (playerMovementState == PlayerMovementStateEnum.Idle)
+		else if (characterMovementState == CharacterMovementStateEnum.Idle)
 		{
 			// animationSprite.Frame = 3;
 			// animationSprite.Stop();
@@ -134,10 +105,26 @@ public partial class Player : CharacterBody2D
 			}
 		}
 
-
 		Velocity = velocity;
 
 		// "MoveAndSlide" already takes delta time into account.
 		MoveAndSlide();
+
+		if (Input.IsActionPressed("fire"))
+		{
+			var clickedCellPos = tileMap.LocalToMap(GetGlobalMousePosition());
+
+			var tileData = tileMap.GetCellTileData(0, clickedCellPos);
+
+			if (tileData != null)
+			{
+				var customData = (bool)tileData.GetCustomData("destructable");
+
+				if (customData) {
+					tileMap.DestroyTile(clickedCellPos);
+				}
+			}
+
+		}
 	}
 }

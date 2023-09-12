@@ -35,8 +35,17 @@ public partial class TileMap : Godot.TileMap
 		}
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	private Godot.Vector2I GetNextTile(Godot.Vector2I pos)
 	{
+		var usedCells = GetUsedCells(0);
+		var cellIdx = usedCells.IndexOf(pos);
+		return usedCells[cellIdx + 1];
+	}
+
+	public void DestroyTile(Godot.Vector2I pos)
+	{
+		var atlasPos = GetCellAtlasCoords(0, pos);
+
+		SetCell(0, pos, 0, GetNextTile(atlasPos));
 	}
 }
