@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "hqmJ32AuGt+h5nUUNXFBDtyaTYm6hZ3KWG7jCUz5sH15hZ/wadv7IiNuHU7RJAe3aIrxVgdbwU9dpMlz3U0QBA==",
+  "success": true,
+  "projectFilePath": "/home/andre/Programmierung/Godot/Godot4/H18/H18.csproj",
+  "expectedPackageFiles": [
+    "/home/andre/.nuget/packages/godot.sourcegenerators/4.1.1/godot.sourcegenerators.4.1.1.nupkg.sha512",
+    "/home/andre/.nuget/packages/godotsharp/4.1.1/godotsharp.4.1.1.nupkg.sha512",
+    "/home/andre/.nuget/packages/godotsharpeditor/4.1.1/godotsharpeditor.4.1.1.nupkg.sha512",
+    "/home/andre/.nuget/packages/microsoft.netcore.app.ref/6.0.21/microsoft.netcore.app.ref.6.0.21.nupkg.sha512",
+    "/home/andre/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.21/microsoft.aspnetcore.app.ref.6.0.21.nupkg.sha512"
+  ],
+  "logs": []
+}

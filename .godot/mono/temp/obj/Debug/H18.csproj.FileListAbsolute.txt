@@ -1,0 +1,17 @@
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/bin/Debug/H18.deps.json
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/bin/Debug/H18.runtimeconfig.json
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/bin/Debug/H18.dll
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/bin/Debug/H18.pdb
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/bin/Debug/GodotSharp.dll
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/bin/Debug/GodotSharpEditor.dll
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/H18.csproj.AssemblyReference.cache
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/H18.GeneratedMSBuildEditorConfig.editorconfig
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/H18.AssemblyInfoInputs.cache
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/H18.AssemblyInfo.cs
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/H18.csproj.CoreCompileInputs.cache
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/H18.csproj.CopyComplete
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/H18.dll
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/refint/H18.dll
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/H18.pdb
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/H18.genruntimeconfig.cache
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/ref/H18.dll
