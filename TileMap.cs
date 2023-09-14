@@ -6,8 +6,11 @@ public partial class TileMap : Godot.TileMap
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		string filePath = "res://Level1.Level";
 
+	}
+
+	public void LoadMap(string filePath)
+	{
 		using var hexFile = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
 
 		int x = 0;
@@ -35,17 +38,31 @@ public partial class TileMap : Godot.TileMap
 		}
 	}
 
-	private Godot.Vector2I GetNextTile(Godot.Vector2I pos)
+	private Godot.Vector2I GetNextTile(Godot.Vector2I pos, int step)
 	{
 		var usedCells = GetUsedCells(0);
 		var cellIdx = usedCells.IndexOf(pos);
-		return usedCells[cellIdx + 1];
+		return usedCells[cellIdx + step];
+	}
+
+	public void HitTile(Godot.Vector2I pos)
+	{
+		DestroyTile(pos);
 	}
 
 	public void DestroyTile(Godot.Vector2I pos)
 	{
-		var atlasPos = GetCellAtlasCoords(0, pos);
+		var tileData = GetCellTileData(0, pos);
+		if (tileData != null)
+		{
+			var customData = (int)tileData.GetCustomData("destructable");
 
-		SetCell(0, pos, 0, GetNextTile(atlasPos));
+			if (customData != 0)
+			{
+				var atlasPos = GetCellAtlasCoords(0, pos);
+
+				SetCell(0, pos, 0, GetNextTile(atlasPos, customData));
+			}
+		}
 	}
 }

@@ -80,8 +80,6 @@ public partial class Player : Character
 		}
 		else if (characterMovementState == CharacterMovementStateEnum.Idle)
 		{
-			// animationSprite.Frame = 3;
-			// animationSprite.Stop();
 			if (orientation < 0)
 				animationSprite.Play("idle_left");
 			else
@@ -114,17 +112,7 @@ public partial class Player : Character
 		{
 			var clickedCellPos = tileMap.LocalToMap(GetGlobalMousePosition());
 
-			var tileData = tileMap.GetCellTileData(0, clickedCellPos);
-
-			if (tileData != null)
-			{
-				var customData = (bool)tileData.GetCustomData("destructable");
-
-				if (customData) {
-					tileMap.DestroyTile(clickedCellPos);
-				}
-			}
-
+			tileMap.DestroyTile(clickedCellPos);
 		}
 	}
 }

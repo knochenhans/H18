@@ -39,4 +39,9 @@ public partial class Character : CharacterBody2D
 		animationSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		tileMap = GetNode<TileMap>("/root/World/TileMap");
 	}
+
+	// public int GetWidth()
+	// {
+	// 	animationSprite.
+	// }
 }

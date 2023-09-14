@@ -1,5 +1,6 @@
-res://node_2d.tscn
 res://Character.cs
-res://node_2d.cs
-res://TileMap.cs
 res://Player.cs
+res://TileMap.cs
+res://World.cs
+res://Camera2D.cs
+res://World.tscn
