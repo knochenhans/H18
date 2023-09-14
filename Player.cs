@@ -70,12 +70,12 @@ public partial class Player : Character
 			if (velocity.X < 0)
 			{
 				animationSprite.Play("walk_left" + animationSuffix);
-				animationSprite.Offset = new Godot.Vector2(-4, 0);
+				animationSprite.Offset = new Godot.Vector2(-4, -1);
 			}
 			else if (velocity.X > 0)
 			{
 				animationSprite.Play("walk_right" + animationSuffix);
-				animationSprite.Offset = new Godot.Vector2(0, 0);
+				animationSprite.Offset = new Godot.Vector2(0, -1);
 			}
 		}
 		else if (characterMovementState == CharacterMovementStateEnum.Idle)
