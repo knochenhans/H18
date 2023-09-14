@@ -1,19 +1,52 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1694641218
+::res://::1694720715
 Adverts.png::CompressedTexture2D::5921577955852238094::1694124043::1694124043::1::::<><>::
 Bang.png::CompressedTexture2D::2228278115689230203::1694124052::1694124052::1::::<><>::
 Blocks1.png::CompressedTexture2D::7664158543453307904::1694124062::1694124062::1::::<><>::
-Character.cs::CSharpScript::-1::1694639882::0::1::::<><>::
+Camera2D.cs::CSharpScript::-1::1694644907::0::1::::<><>::
+Character.cs::CSharpScript::-1::1694720700::0::1::::<><>::
 icon.svg::CompressedTexture2D::3075509683996317588::1694124021::1694124026::1::::<><>::
 Man1Walk.png::CompressedTexture2D::5001652047899778997::1694126104::1694126104::1::::<><>::
 output.json::JSON::-1::1694549932::0::1::::<><>::
-Player.cs::CSharpScript::-1::1694632120::0::1::::<><>::
-Pointer2x.png::CompressedTexture2D::1346745863227504984::1694452147::1694452199::1::::<><>::
+Player.cs::CSharpScript::-1::1694720553::0::1::::<><>::
+Pointer2x.png::CompressedTexture2D::1346745863227504984::1694720946::1694720948::1::::<><>::
 Pointer.png::CompressedTexture2D::4773922622779677489::1694450981::1694451009::1::::<><>::
 README.md::TextFile::-1::1694550607::0::1::::<><>::
-TileMap.cs::CSharpScript::-1::1694632728::0::1::::<><>::
-World.cs::CSharpScript::-1::1694640024::0::1::::<><>::
-World.tscn::PackedScene::7805257848947606957::1694640399::0::1::::<><>::res://World.cs<>uid://dhgttou1yhelc::::res://Blocks1.png<>res://TileMap.cs<>res://Player.cs<>uid://c2df5s0lcxsd3::::res://Sprites/Man1Aim_1.png<>uid://oygaynwij63f::::res://Sprites/Man1Walk_1.png
+TileMap.cs::CSharpScript::-1::1694706209::0::1::::<><>::
+World.cs::CSharpScript::-1::1694720621::0::1::::<><>::
+World.tscn::PackedScene::7805257848947606957::1694720715::0::1::::<><>::res://World.cs<>uid://dhgttou1yhelc::::res://Blocks1.png<>res://TileMap.cs<>res://Camera2D.cs<>res://Player.cs<>uid://c2df5s0lcxsd3::::res://Sprites/Man1Aim_1.png<>uid://oygaynwij63f::::res://Sprites/Man1Walk_1.png
+::res://Sounds/::1694706450
+Sound.Abk.0.Beep    .wav::AudioStreamWAV::7975222565091159753::1694450981::1694706450::1::::<><>::
+Sound.Abk.1.Burning .wav::AudioStreamWAV::560670824355533589::1694450981::1694706450::1::::<><>::
+Sound.Abk.2.Vehicle .wav::AudioStreamWAV::7282405123750931303::1694450981::1694706450::1::::<><>::
+Sound.Abk.3.Chopper .wav::AudioStreamWAV::8608376627873845990::1694450981::1694706450::1::::<><>::
+Sound.Abk.4.DoorOpen.wav::AudioStreamWAV::5425058929577882657::1694450981::1694706450::1::::<><>::
+Sound.Abk.5.xplosion.wav::AudioStreamWAV::6575577340938295540::1694450981::1694706450::1::::<><>::
+Sound.Abk.6.UFO     .wav::AudioStreamWAV::3513108866324006232::1694450981::1694706450::1::::<><>::
+Sound.Abk.7.Fire    .wav::AudioStreamWAV::6147144247470081982::1694450981::1694706450::1::::<><>::
+Sound.Abk.8.HitWood .wav::AudioStreamWAV::2500459456250035712::1694450981::1694706450::1::::<><>::
+Sound.Abk.9.Hurt1   .wav::AudioStreamWAV::6671332866337586398::1694450981::1694706450::1::::<><>::
+Sound.Abk.10.Hurt2   .wav::AudioStreamWAV::2412336498962087102::1694450981::1694706450::1::::<><>::
+Sound.Abk.11.Hurt3   .wav::AudioStreamWAV::1416245919066205815::1694450981::1694706450::1::::<><>::
+Sound.Abk.12.Ladder  .wav::AudioStreamWAV::5439870495700909107::1694450981::1694706450::1::::<><>::
+Sound.Abk.13.Laser   .wav::AudioStreamWAV::6527962917523855980::1694450981::1694706450::1::::<><>::
+Sound.Abk.14.MetlBang.wav::AudioStreamWAV::794403281949847421::1694450981::1694706450::1::::<><>::
+Sound.Abk.15.Missile .wav::AudioStreamWAV::1667287796923185802::1694450981::1694706450::1::::<><>::
+Sound.Abk.16.Pistol  .wav::AudioStreamWAV::1806164455058420792::1694450981::1694706450::1::::<><>::
+Sound.Abk.17.Rain    .wav::AudioStreamWAV::8015072614577213704::1694450981::1694706450::1::::<><>::
+Sound.Abk.18.Shotgun .wav::AudioStreamWAV::265700043808301404::1694450981::1694706450::1::::<><>::
+Sound.Abk.19.Teleport.wav::AudioStreamWAV::7898705033892962448::1694450981::1694706450::1::::<><>::
+Sound.Abk.20.Lightnin.wav::AudioStreamWAV::5944289830945335726::1694450981::1694706450::1::::<><>::
+Sound.Abk.21.Uzi     .wav::AudioStreamWAV::9012584885380177507::1694450981::1694706450::1::::<><>::
+Sound.Abk.22.Water   .wav::AudioStreamWAV::6648744223893628924::1694450981::1694706450::1::::<><>::
+Sound.Abk.23.Wind    .wav::AudioStreamWAV::6005060828416862253::1694450981::1694706450::1::::<><>::
+Sound.Abk.24.Wind2   .wav::AudioStreamWAV::1511405151257179526::1694450981::1694706450::1::::<><>::
+Sound.Abk.25.SmashWin.wav::AudioStreamWAV::7365803043585261060::1694450981::1694706450::1::::<><>::
+Sound.Abk.26.Sheep   .wav::AudioStreamWAV::8381659328839393119::1694450981::1694706450::1::::<><>::
+Sound.Abk.27.Alert   .wav::AudioStreamWAV::1076370442750373032::1694450981::1694706450::1::::<><>::
+Sound.Abk.28.DoorClos.wav::AudioStreamWAV::7443667167125171140::1694450981::1694706450::1::::<><>::
+Sound.Abk.29.SmshWin2.wav::AudioStreamWAV::7606050697466540157::1694450981::1694706450::1::::<><>::
+Sound.Abk.30.Tank    .wav::AudioStreamWAV::8015027877647105212::1694450981::1694706450::1::::<><>::
 ::res://Sprites/::1694615306
 Man1Aim_1.png::CompressedTexture2D::6674491422200035266::1694547990::1694547916::1::::<><>::
 Man1Walk.Abk.0.png::CompressedTexture2D::8739291920407132740::1694122689::1694287176::1::::<><>::

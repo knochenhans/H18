@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cttytkg1437nu"
+path="res://.godot/imported/Sound.Abk.7.Fire    .wav-10db896718936ee1caecb5f2d39842cc.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound.Abk.7.Fire    .wav"
+dest_files=["res://.godot/imported/Sound.Abk.7.Fire    .wav-10db896718936ee1caecb5f2d39842cc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

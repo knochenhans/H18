@@ -108,11 +108,13 @@ public partial class Player : Character
 		// "MoveAndSlide" already takes delta time into account.
 		MoveAndSlide();
 
-		if (Input.IsActionPressed("fire"))
+		if (Input.IsActionJustPressed("fire"))
 		{
-			var clickedCellPos = tileMap.LocalToMap(GetGlobalMousePosition());
-
-			tileMap.DestroyTile(clickedCellPos);
+			StartFiringCurrentWeapon(GetGlobalMousePosition());
+		}
+		else if (Input.IsActionJustReleased("fire"))
+		{
+			StopFiringCurrentWeapon();
 		}
 	}
 }

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://droex7qotgxc6"
+path="res://.godot/imported/Sound.Abk.26.Sheep   .wav-9caea24afe03e064a1c36c1e930ff4a2.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound.Abk.26.Sheep   .wav"
+dest_files=["res://.godot/imported/Sound.Abk.26.Sheep   .wav-9caea24afe03e064a1c36c1e930ff4a2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

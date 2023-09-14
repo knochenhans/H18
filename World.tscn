@@ -573,7 +573,7 @@ texture = ExtResource("2_7ibt8")
 4:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:10/0/physics_layer_0/angular_velocity = 0.0
 4:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:10/0/custom_data_0 = -1
+4:10/0/custom_data_0 = 1
 5:10/0 = 0
 5:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:10/0/physics_layer_0/angular_velocity = 0.0
@@ -1745,7 +1745,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c7la1"]
 radius = 4.0
-height = 18.0
+height = 15.0
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ih2j6")
@@ -1771,3 +1771,6 @@ offset = Vector2(-4, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_c7la1")
+
+[node name="WeaponSound" type="AudioStreamPlayer2D" parent="Player"]
+volume_db = -6.0

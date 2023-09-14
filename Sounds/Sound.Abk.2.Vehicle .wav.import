@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://db0wfbtk68csd"
+path="res://.godot/imported/Sound.Abk.2.Vehicle .wav-18738fedafd900d0e3b4796fd793cd3a.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound.Abk.2.Vehicle .wav"
+dest_files=["res://.godot/imported/Sound.Abk.2.Vehicle .wav-18738fedafd900d0e3b4796fd793cd3a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

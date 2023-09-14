@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2bv43r1by3io"
+path="res://.godot/imported/Sound.Abk.9.Hurt1   .wav-8a81b9f2544d6bea2a9d67754179068d.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound.Abk.9.Hurt1   .wav"
+dest_files=["res://.godot/imported/Sound.Abk.9.Hurt1   .wav-8a81b9f2544d6bea2a9d67754179068d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

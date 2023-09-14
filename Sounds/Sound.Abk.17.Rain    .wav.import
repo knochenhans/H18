@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dmgtcsvwercfo"
+path="res://.godot/imported/Sound.Abk.17.Rain    .wav-a40b91d4959b51dab42c756ce93ae14c.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound.Abk.17.Rain    .wav"
+dest_files=["res://.godot/imported/Sound.Abk.17.Rain    .wav-a40b91d4959b51dab42c756ce93ae14c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

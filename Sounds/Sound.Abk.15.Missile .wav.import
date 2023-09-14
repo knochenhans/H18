@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://x0v8skkuoj1c"
+path="res://.godot/imported/Sound.Abk.15.Missile .wav-0e1964b2a86e7159e65ceb28586e0f20.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound.Abk.15.Missile .wav"
+dest_files=["res://.godot/imported/Sound.Abk.15.Missile .wav-0e1964b2a86e7159e65ceb28586e0f20.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

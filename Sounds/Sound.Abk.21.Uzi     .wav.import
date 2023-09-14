@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1n07rqxtxeed"
+path="res://.godot/imported/Sound.Abk.21.Uzi     .wav-1855c1fd27df06da38ce9c67937ed8c6.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound.Abk.21.Uzi     .wav"
+dest_files=["res://.godot/imported/Sound.Abk.21.Uzi     .wav-1855c1fd27df06da38ce9c67937ed8c6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

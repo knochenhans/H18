@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cjrd4wmpogwop"
+path="res://.godot/imported/Sound.Abk.12.Ladder  .wav-6641706e14f0b3e4ddd859aecbd9adb6.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound.Abk.12.Ladder  .wav"
+dest_files=["res://.godot/imported/Sound.Abk.12.Ladder  .wav-6641706e14f0b3e4ddd859aecbd9adb6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

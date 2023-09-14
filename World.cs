@@ -1,6 +1,75 @@
 using Godot;
 using System;
 
+public enum WeaponState
+{
+	Idle,
+	Firing,
+	Loading
+}
+
+public class Weapon
+{
+	private AudioStream fireSound;
+
+	private double cooldownCurrent = 0;
+	private double cooldownMax;
+
+	private WeaponState state = WeaponState.Idle;
+
+	public Weapon(string fireSoundFilename, double cooldown)
+	{
+		fireSound = ResourceLoader.Load<AudioStream>("res://Sounds/" + fireSoundFilename);
+		cooldownMax = cooldown;
+		cooldownCurrent = cooldown;
+	}
+
+	public AudioStream GetFireSound()
+	{
+		return fireSound;
+	}
+
+	public void Update(double delta)
+	{
+		if (cooldownCurrent < cooldownMax)
+		{
+			cooldownCurrent += delta;
+		}
+		else
+		{
+			if (cooldownCurrent >= cooldownMax)
+				cooldownCurrent = cooldownMax;
+		}
+	}
+
+	public void StartFiring()
+	{
+		if (state == WeaponState.Idle)
+			state = WeaponState.Firing;
+	}
+
+	public void StopFiring()
+	{
+		if (state == WeaponState.Firing)
+		{
+			cooldownCurrent = 0;
+			state = WeaponState.Idle;
+		}
+	}
+
+	public bool Ready()
+	{
+		return (cooldownCurrent == cooldownMax);
+	}
+}
+
+public class Pistol : Weapon
+{
+	public Pistol() : base("Sound.Abk.16.Pistol  .wav", 0.2)
+	{
+	}
+}
+
 public partial class World : Node2D
 {
 	Vector2I startPos = new Vector2I(5, 28);
