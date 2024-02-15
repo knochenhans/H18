@@ -3,10 +3,9 @@ using System;
 
 public partial class Player : Character
 {
-	// Number of sectors
-	private static readonly int numSectors = 10;
+	private Thing currentThing;
 
-	// Calculate the size of each sector in radians
+	private static readonly int numSectors = 10;
 	private readonly float sectorSize = 2 * Mathf.Pi / numSectors;
 
 	// Check if a given radian value falls into a sector
@@ -116,5 +115,37 @@ public partial class Player : Character
 		{
 			StopFiringCurrentWeapon();
 		}
+
+		if (Input.IsActionJustPressed("interact"))
+		{
+			TakeCurrentThing();
+		}
+	}
+
+	private void TakeCurrentThing()
+	{
+		if (currentThing != null)
+		{
+			if (currentThing is Thing)
+			{
+				if (currentThing is WeaponSprite)
+					weaponsOwned[currentThing.thingType] = true;
+				else if (currentThing is AmmoSprite)
+					weaponsAmmo[currentThing.thingType] += (currentThing as AmmoSprite).ammoAmount;
+
+				currentThing.QueueFree();
+			}
+		}
+	}
+
+	public void OnScannerAreaEntered(Area2D area)
+	{
+		currentThing = (Thing)area;
+
+	}
+	public void OnScannerAreaExited(Area2D area)
+	{
+		if (currentThing == area)
+			currentThing = null;
 	}
 }

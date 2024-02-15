@@ -1,11 +1,17 @@
 using Godot;
 using System;
 
-public enum WeaponState
+public enum WeaponStateEnum
 {
 	Idle,
 	Firing,
 	Loading
+}
+
+public enum ThingsEnum
+{
+	Pistol,
+	AmmoPistol
 }
 
 public class Weapon
@@ -15,7 +21,7 @@ public class Weapon
 	private double cooldownCurrent = 0;
 	private double cooldownMax;
 
-	private WeaponState state = WeaponState.Idle;
+	private WeaponStateEnum state = WeaponStateEnum.Idle;
 
 	public Weapon(string fireSoundFilename, double cooldown)
 	{
@@ -44,16 +50,16 @@ public class Weapon
 
 	public void StartFiring()
 	{
-		if (state == WeaponState.Idle)
-			state = WeaponState.Firing;
+		if (state == WeaponStateEnum.Idle)
+			state = WeaponStateEnum.Firing;
 	}
 
 	public void StopFiring()
 	{
-		if (state == WeaponState.Firing)
+		if (state == WeaponStateEnum.Firing)
 		{
 			cooldownCurrent = 0;
-			state = WeaponState.Idle;
+			state = WeaponStateEnum.Idle;
 		}
 	}
 
@@ -70,9 +76,40 @@ public class Pistol : Weapon
 	}
 }
 
+public class ThingLoader
+{
+	private World world;
+	private TileMap tileMap;
+	private Godot.Collections.Array<Thing> things;
+
+	public ThingLoader(World world, TileMap tileMap)
+	{
+		this.world = world;
+		this.tileMap = tileMap;
+
+		things = new Godot.Collections.Array<Thing>();
+	}
+
+	public void AddWeapon(ThingsEnum thingType, Vector2I thingPos)
+	{
+		var thingInstance = GD.Load<PackedScene>("res://WeaponSprite.tscn").Instantiate<WeaponSprite>();
+		thingInstance.Position = tileMap.ToGlobal(tileMap.MapToLocal(thingPos));
+		thingInstance.Position = new Vector2(thingInstance.Position.X - 9, thingInstance.Position.Y - 9);
+		world.AddChild(thingInstance);
+	}
+	public void AddAmmo(ThingsEnum thingType, Vector2I thingPos, int ammoAmount)
+	{
+		var thingInstance = GD.Load<PackedScene>("res://AmmoSprite.tscn").Instantiate<AmmoSprite>();
+		thingInstance.Position = tileMap.ToGlobal(tileMap.MapToLocal(thingPos));
+		thingInstance.Position = new Vector2(thingInstance.Position.X - 9, thingInstance.Position.Y - 9);
+		thingInstance.ammoAmount = ammoAmount;
+		world.AddChild(thingInstance);
+	}
+}
+
 public partial class World : Node2D
 {
-	Vector2I startPos = new Vector2I(5, 28);
+	Vector2I startPos = new Vector2I(4, 28);
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -93,7 +130,11 @@ public partial class World : Node2D
 
 		player.Position = ToGlobal(tileMap.MapToLocal(startPos));
 
-		Camera2D camera = GetNode<Camera2D>("Camera2D");
+		Camera2D camera = GetNode<Camera2D>("../Camera2D");
 		camera.UpdateLimits();
+
+		var thingLoader = new ThingLoader(this, tileMap);
+		thingLoader.AddWeapon(ThingsEnum.Pistol, new Vector2I(6, 28));
+		thingLoader.AddAmmo(ThingsEnum.AmmoPistol, new Vector2I(7, 28), 80);
 	}
 }

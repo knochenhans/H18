@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Character : CharacterBody2D
 {
@@ -28,6 +29,9 @@ public partial class Character : CharacterBody2D
 		Missile
 	}
 
+	protected Dictionary<ThingsEnum, bool> weaponsOwned = new Dictionary<ThingsEnum, bool>();
+	protected Dictionary<ThingsEnum, int> weaponsAmmo = new Dictionary<ThingsEnum, int>();
+
 	protected Weapon[] weapons;
 
 	protected CharacterMovementStateEnum characterMovementState = CharacterMovementStateEnum.Idle;
@@ -40,10 +44,14 @@ public partial class Character : CharacterBody2D
 		base._Ready();
 
 		animationSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		tileMap = GetNode<TileMap>("/root/World/TileMap");
+		tileMap = GetNode<TileMap>("/root/Game/World/TileMap");
 		weaponSound = GetNode<AudioStreamPlayer2D>("WeaponSound");
 
 		weapons = new Weapon[] { new Pistol() };
+
+		// Initialize Ammo Slots
+
+		weaponsAmmo[ThingsEnum.Pistol] = 0;
 	}
 
 	protected void StartFiringCurrentWeapon(Godot.Vector2 targetPos)

@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://b67f0bpd38ehq"]
+
+[ext_resource type="PackedScene" uid="uid://b15h3xmngutud" path="res://Thing.tscn" id="1_yrh5l"]
+[ext_resource type="Script" path="res://WeaponSprite.cs" id="2_ufg0b"]
+[ext_resource type="Texture2D" uid="uid://bjklcv7jf1eom" path="res://Sprites/Objects.Abk.56.png" id="3_gvf2y"]
+[ext_resource type="Texture2D" uid="uid://cj48l485rcp5v" path="res://Sprites/Objects.Abk.57.png" id="4_nykxn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2tg5i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gvf2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nykxn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4k6e"]
+size = Vector2(7, 4)
+
+[node name="WeaponSprite" instance=ExtResource("1_yrh5l")]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("2_ufg0b")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_2tg5i")
+autoplay = "default"
+frame_progress = 0.842834
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-4.5, 0)
+shape = SubResource("RectangleShape2D_x4k6e")

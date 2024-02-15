@@ -10,8 +10,8 @@ public partial class Camera2D : Godot.Camera2D
 
 	public override void _Ready()
 	{
-		player = GetNode<Player>("../Player");
-		tileMap = GetNode<TileMap>("../TileMap"); // Adjust the path to your TileMap node.
+		player = GetNode<Player>("../World/Player");
+		tileMap = GetNode<TileMap>("../World/TileMap"); // Adjust the path to your TileMap node.
 	}
 
 	public void UpdateLimits()

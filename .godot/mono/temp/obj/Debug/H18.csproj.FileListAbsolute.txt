@@ -15,3 +15,4 @@
 /home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/H18.pdb
 /home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/H18.genruntimeconfig.cache
 /home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/ref/H18.dll
+/home/andre/Programmierung/Godot/Godot4/H18/.godot/mono/temp/obj/Debug/H18.sourcelink.json

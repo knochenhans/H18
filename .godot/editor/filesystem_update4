@@ -1,6 +1,8 @@
-res://World.tscn
+res://AmmoSprite.cs
 res://Camera2D.cs
 res://Character.cs
 res://Player.cs
+res://Thing.cs
 res://TileMap.cs
+res://WeaponSprite.cs
 res://World.cs

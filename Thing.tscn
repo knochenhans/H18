@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b15h3xmngutud"]
+
+[ext_resource type="Script" path="res://Thing.cs" id="1_fx8na"]
+
+[node name="Thing" type="Area2D"]
+position = Vector2(0, -3)
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_fx8na")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
