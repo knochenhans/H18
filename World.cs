@@ -1,4 +1,6 @@
+using System;
 using Godot;
+using Godot.Collections;
 
 public enum WeaponStateEnum
 {
@@ -28,14 +30,14 @@ public class ThingLoader
 {
 	private World world;
 	private TileMap tileMap;
-	private Godot.Collections.Array<Thing> things;
+	// private Array<Thing> things;
 
 	public ThingLoader(World world, TileMap tileMap)
 	{
 		this.world = world;
 		this.tileMap = tileMap;
 
-		things = new Godot.Collections.Array<Thing>();
+		// things = new Godot.Collections.Array<Thing>();
 	}
 
 	public void AddWeapon(ThingsEnum thingType, Vector2I thingPos)
@@ -55,9 +57,17 @@ public class ThingLoader
 	}
 }
 
+public partial class Shot : GodotObject
+{
+	public Character owner;
+	public Vector2 targetPos;
+}
+
 public partial class World : Node2D
 {
 	Vector2I startPos = new(4, 28);
+
+	Array<Shot> ShotQueue = new();
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -93,8 +103,33 @@ public partial class World : Node2D
 
 	public void _OnWeaponFire(Character owner, Vector2 targetPos)
 	{
-		var targetCellPos = GetNode<TileMap>("TileMap").LocalToMap(targetPos);
+		ShotQueue.Add(new Shot { owner = owner, targetPos = targetPos });
+	}
 
-		GetNode<TileMap>("TileMap").DestroyTile(targetCellPos);
+	public override void _PhysicsProcess(double delta)
+	{
+		foreach (var shot in ShotQueue)
+		{
+			var spaceState = GetWorld2D().DirectSpaceState;
+
+			var targetPos = shot.targetPos;
+			var tileMap = GetNode<TileMap>("TileMap");
+
+			var query = PhysicsRayQueryParameters2D.Create(shot.owner.GlobalPosition, targetPos);
+			var result = spaceState.IntersectRay(query);
+
+			if (result.Count > 0)
+			{
+				var collider = result["collider"];
+				var collisionPoint = (Vector2)result["position"];
+
+				if ((GodotObject)collider is TileMap)
+					targetPos = collisionPoint;
+			}
+
+			var targetCellPos = GetNode<TileMap>("TileMap").LocalToMap(targetPos);
+			tileMap.HitTile(targetCellPos);
+		}
+		ShotQueue.Clear();
 	}
 }
