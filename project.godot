@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="H18"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SceneManagerNode="*res://addons/SceneManager/SceneManagerNode.tscn"
 
 [dotnet]
 
@@ -22,6 +26,10 @@ project/assembly_name="H18"
 [editor]
 
 movie_writer/movie_file="/tmp/output.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/SceneManager/plugin.cfg")
 
 [input]
 
@@ -79,3 +87,4 @@ interact={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

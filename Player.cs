@@ -27,6 +27,18 @@ public partial class Player : Character
 	{
 		base._PhysicsProcess(delta);
 
+		string animationSuffix = "";
+
+		switch (characterWeaponState)
+		{
+			case CharacterCurrentWeaponEnum.None:
+				animationSuffix = "-empty";
+				break;
+			case CharacterCurrentWeaponEnum.Pistol:
+				animationSuffix = "-pistol";
+				break;
+		}
+
 		var velocity = Velocity;
 
 		velocity.Y += (float)delta * Gravity;
@@ -36,6 +48,7 @@ public partial class Player : Character
 			velocity.X = -WalkSpeed;
 
 			characterMovementState = CharacterMovementStateEnum.Walking;
+			animationSprite.Play("walk-left" + animationSuffix);
 			orientation = -1;
 		}
 		else if (Input.IsActionPressed("right"))
@@ -43,46 +56,23 @@ public partial class Player : Character
 			velocity.X = WalkSpeed;
 
 			characterMovementState = CharacterMovementStateEnum.Walking;
+			animationSprite.Play("walk-right" + animationSuffix);
 			orientation = 1;
 		}
 		else
 		{
 			characterMovementState = CharacterMovementStateEnum.Idle;
 
+			// if (orientation < 0)
+			// 	animationSprite.Play("idle-left");
+			// else
+			// 	animationSprite.Play("idle-right");
+
 			velocity.X = 0;
 		}
 
-		string animationSuffix = "";
-
-		switch (characterWeaponState)
+		if (characterMovementState == CharacterMovementStateEnum.Idle)
 		{
-			case CharacterCurrentWeaponEnum.None:
-				animationSuffix = "";
-				break;
-			case CharacterCurrentWeaponEnum.Pistol:
-				animationSuffix = "_pistol";
-				break;
-		}
-
-		if (characterMovementState == CharacterMovementStateEnum.Walking)
-		{
-			if (velocity.X < 0)
-			{
-				animationSprite.Play("walk_left" + animationSuffix);
-				animationSprite.Offset = new Godot.Vector2(-4, -1);
-			}
-			else if (velocity.X > 0)
-			{
-				animationSprite.Play("walk_right" + animationSuffix);
-				animationSprite.Offset = new Godot.Vector2(0, -1);
-			}
-		}
-		else if (characterMovementState == CharacterMovementStateEnum.Idle)
-		{
-			if (orientation < 0)
-				animationSprite.Play("idle_left");
-			else
-				animationSprite.Play("idle_right");
 			var direction = (GetGlobalMousePosition() - Position).Normalized();
 			var angle = Math.PI + Math.Atan2(direction.X, direction.Y);
 
@@ -90,15 +80,15 @@ public partial class Player : Character
 
 			if (sector >= 0 && sector < 5)
 			{
-				animationSprite.Play("aim_left" + animationSuffix);
+				animationSprite.Play("aim-left" + animationSuffix);
 				animationSprite.Frame = 4 - sector;
-				animationSprite.Offset = new Godot.Vector2(-4, -4);
+				// animationSprite.Offset = new Godot.Vector2(-4, -4);
 			}
 			else
 			{
-				animationSprite.Play("aim_right" + animationSuffix);
+				animationSprite.Play("aim-right" + animationSuffix);
 				animationSprite.Frame = 4 - (sector - 5);
-				animationSprite.Offset = new Godot.Vector2(0, -4);
+				// animationSprite.Offset = new Godot.Vector2(0, -4);
 			}
 		}
 

@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://b46xhre03dhm8"]
+
+[ext_resource type="PackedScene" uid="uid://bawrmdt67ohun" path="res://Scenes/Scene.tscn" id="1_hl7nu"]
+[ext_resource type="Script" path="res://Scenes/Game.cs" id="2_4jlpu"]
+[ext_resource type="Script" path="res://Camera2D.cs" id="3_amgya"]
+[ext_resource type="PackedScene" uid="uid://djg6pruy0kx06" path="res://World.tscn" id="4_6opms"]
+
+[node name="Game" instance=ExtResource("1_hl7nu")]
+script = ExtResource("2_4jlpu")
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+zoom = Vector2(2, 2)
+script = ExtResource("3_amgya")
+
+[node name="World" parent="." index="1" instance=ExtResource("4_6opms")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="2"]
+
+[node name="UI" type="CenterContainer" parent="CanvasLayer" index="0"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI" index="0"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="." index="3"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1015.0
+offset_bottom = 499.0
