@@ -38,19 +38,19 @@ public partial class TileMap : Godot.TileMap
 		}
 	}
 
-	private Godot.Vector2I GetNextTile(Godot.Vector2I pos, int step)
+	private Vector2I GetNextTile(Vector2I pos, int step)
 	{
 		var usedCells = GetUsedCells(0);
 		var cellIdx = usedCells.IndexOf(pos);
 		return usedCells[cellIdx + step];
 	}
 
-	public void HitTile(Godot.Vector2I pos)
+	public void HitTile(Vector2I pos)
 	{
 		DestroyTile(pos);
 	}
 
-	public void DestroyTile(Godot.Vector2I pos)
+	public void DestroyTile(Vector2I pos)
 	{
 		var tileData = GetCellTileData(0, pos);
 		if (tileData != null)

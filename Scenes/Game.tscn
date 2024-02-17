@@ -7,6 +7,7 @@
 
 [node name="Game" instance=ExtResource("1_hl7nu")]
 script = ExtResource("2_4jlpu")
+FadeOutTime = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 zoom = Vector2(2, 2)

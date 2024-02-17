@@ -29,12 +29,12 @@ public partial class Player : Character
 
 		string animationSuffix = "";
 
-		switch (characterWeaponState)
+		switch (CharacterWeaponState)
 		{
-			case CharacterCurrentWeaponEnum.None:
+			case WeaponTypeEnum.None:
 				animationSuffix = "-empty";
 				break;
-			case CharacterCurrentWeaponEnum.Pistol:
+			case WeaponTypeEnum.Pistol:
 				animationSuffix = "-pistol";
 				break;
 		}
@@ -47,21 +47,21 @@ public partial class Player : Character
 		{
 			velocity.X = -WalkSpeed;
 
-			characterMovementState = CharacterMovementStateEnum.Walking;
-			animationSprite.Play("walk-left" + animationSuffix);
+			CharacterMovementState = CharacterMovementStateEnum.Walking;
+			AnimationSpriteNode.Play("walk-left" + animationSuffix);
 			orientation = -1;
 		}
 		else if (Input.IsActionPressed("right"))
 		{
 			velocity.X = WalkSpeed;
 
-			characterMovementState = CharacterMovementStateEnum.Walking;
-			animationSprite.Play("walk-right" + animationSuffix);
+			CharacterMovementState = CharacterMovementStateEnum.Walking;
+			AnimationSpriteNode.Play("walk-right" + animationSuffix);
 			orientation = 1;
 		}
 		else
 		{
-			characterMovementState = CharacterMovementStateEnum.Idle;
+			CharacterMovementState = CharacterMovementStateEnum.Idle;
 
 			// if (orientation < 0)
 			// 	animationSprite.Play("idle-left");
@@ -71,7 +71,7 @@ public partial class Player : Character
 			velocity.X = 0;
 		}
 
-		if (characterMovementState == CharacterMovementStateEnum.Idle)
+		if (CharacterMovementState == CharacterMovementStateEnum.Idle)
 		{
 			var direction = (GetGlobalMousePosition() - Position).Normalized();
 			var angle = Math.PI + Math.Atan2(direction.X, direction.Y);
@@ -80,14 +80,14 @@ public partial class Player : Character
 
 			if (sector >= 0 && sector < 5)
 			{
-				animationSprite.Play("aim-left" + animationSuffix);
-				animationSprite.Frame = 4 - sector;
+				AnimationSpriteNode.Play("aim-left" + animationSuffix);
+				AnimationSpriteNode.Frame = 4 - sector;
 				// animationSprite.Offset = new Godot.Vector2(-4, -4);
 			}
 			else
 			{
-				animationSprite.Play("aim-right" + animationSuffix);
-				animationSprite.Frame = 4 - (sector - 5);
+				AnimationSpriteNode.Play("aim-right" + animationSuffix);
+				AnimationSpriteNode.Frame = 4 - (sector - 5);
 				// animationSprite.Offset = new Godot.Vector2(0, -4);
 			}
 		}
@@ -114,18 +114,18 @@ public partial class Player : Character
 
 	private void TakeCurrentThing()
 	{
-		if (currentThing != null)
-		{
-			if (currentThing is Thing)
-			{
-				if (currentThing is WeaponSprite)
-					weaponsOwned[currentThing.thingType] = true;
-				else if (currentThing is AmmoSprite)
-					weaponsAmmo[currentThing.thingType] += (currentThing as AmmoSprite).ammoAmount;
+		// if (currentThing != null)
+		// {
+		// 	if (currentThing is Thing)
+		// 	{
+		// 		if (currentThing is WeaponSprite)
+		// 			weaponsOwned[currentThing.thingType] = true;
+		// 		else if (currentThing is AmmoSprite)
+		// 			weaponsAmmo[currentThing.thingType] += (currentThing as AmmoSprite).ammoAmount;
 
-				currentThing.QueueFree();
-			}
-		}
+		// 		currentThing.QueueFree();
+		// 	}
+		// }
 	}
 
 	public void OnScannerAreaEntered(Area2D area)

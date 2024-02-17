@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 
 public partial class Character : CharacterBody2D
@@ -7,9 +6,8 @@ public partial class Character : CharacterBody2D
 	protected const float Gravity = 200.0f;
 	protected const int WalkSpeed = 50;
 
-	protected AnimatedSprite2D animationSprite;
-	protected TileMap tileMap;
-	protected AudioStreamPlayer2D weaponSound;
+	protected AnimatedSprite2D AnimationSpriteNode;
+	protected AudioStreamPlayer2D WeaponSoundNode;
 
 	protected enum CharacterMovementStateEnum
 	{
@@ -18,24 +16,13 @@ public partial class Character : CharacterBody2D
 		Aiming
 	}
 
-	protected enum CharacterCurrentWeaponEnum
-	{
-		None,
-		Pistol,
-		Uzi,
-		Minigun,
-		Shotgun,
-		Bazooka,
-		Missile
-	}
+	protected Dictionary<WeaponTypeEnum, bool> WeaponsOwned = new();
+	protected Dictionary<WeaponTypeEnum, int> WeaponsAmmo = new();
 
-	protected Dictionary<ThingsEnum, bool> weaponsOwned = new Dictionary<ThingsEnum, bool>();
-	protected Dictionary<ThingsEnum, int> weaponsAmmo = new Dictionary<ThingsEnum, int>();
+	protected Weapon[] WeaponSlots { get; set; } = new Weapon[7];
 
-	protected Weapon[] weapons;
-
-	protected CharacterMovementStateEnum characterMovementState = CharacterMovementStateEnum.Idle;
-	protected CharacterCurrentWeaponEnum characterWeaponState = CharacterCurrentWeaponEnum.Pistol;
+	protected CharacterMovementStateEnum CharacterMovementState { get; set; } = CharacterMovementStateEnum.Idle;
+	protected WeaponTypeEnum CharacterWeaponState { get; set; } = WeaponTypeEnum.None;
 
 	protected int orientation = -1;
 
@@ -43,43 +30,38 @@ public partial class Character : CharacterBody2D
 	{
 		base._Ready();
 
-		animationSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		tileMap = GetNode<TileMap>("/root/Game/World/TileMap");
-		weaponSound = GetNode<AudioStreamPlayer2D>("WeaponSound");
-
-		weapons = new Weapon[] { new Pistol() };
-
-		// Initialize Ammo Slots
-
-		weaponsAmmo[ThingsEnum.Pistol] = 0;
+		AnimationSpriteNode = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 	}
 
-	protected void StartFiringCurrentWeapon(Godot.Vector2 targetPos)
+	protected void StartFiringCurrentWeapon(Vector2 targetPos)
 	{
-		if (weapons[0].Ready())
-		{
-			weapons[0].StartFiring();
-			weaponSound.Stream = weapons[0].GetFireSound();
-			weaponSound.Play();
-			var clickedCellPos = tileMap.LocalToMap(targetPos);
+		// if (weapons[0].Ready())
+		// {
+		WeaponSlots[0].StartFiring(targetPos);
+		// 	weaponSound.Stream = weapons[0].GetFireSound();
+		// 	weaponSound.Play();
+		// 	var clickedCellPos = tileMap.LocalToMap(targetPos);
 
-			tileMap.DestroyTile(clickedCellPos);
-		}
+		// 	tileMap.DestroyTile(clickedCellPos);
+		// }
 	}
 
 	protected void StopFiringCurrentWeapon()
 	{
-		weapons[0].StopFiring();
+		WeaponSlots[0].StopFiring();
 	}
 
 
-	public override void _PhysicsProcess(double delta)
-	{
-		base._PhysicsProcess(delta);
+	// public override void _PhysicsProcess(double delta)
+	// {
+	// 	base._PhysicsProcess(delta);
+	// }
 
-		for (int i = 0; i < weapons.Length; i++)
-		{
-			weapons[i].Update(delta);
-		}
+	public void AddWeapon(Weapon weapon)
+	{
+		AddChild(weapon);
+		WeaponsOwned[weapon.WeaponType] = true;
+		WeaponsAmmo[weapon.WeaponType] = 0;
+		WeaponSlots[0] = weapon;
 	}
 }

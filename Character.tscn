@@ -8,21 +8,20 @@ radius = 3.0
 height = 14.0
 
 [node name="Character" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_iu3xy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
 sprite_frames = ExtResource("2_gun81")
 animation = &"aim-left-empty"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, -6)
 shape = SubResource("CapsuleShape2D_etnqg")
 
-[node name="WeaponSound" type="AudioStreamPlayer2D" parent="."]
-volume_db = -6.0
-
 [node name="Scanner" type="Area2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, -8)
 collision_layer = 2
 collision_mask = 2
 input_pickable = false

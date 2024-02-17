@@ -4,6 +4,7 @@ res://addons/SceneManager/SceneManagerNode.cs
 res://AmmoSprite.cs
 res://Camera2D.cs
 res://Character.cs
+res://Main.cs
 res://Player.cs
 res://Scenes/Credits.cs
 res://Scenes/Game.cs
@@ -15,10 +16,13 @@ res://Thing.cs
 res://TileMap.cs
 res://WeaponSprite.cs
 res://World.cs
-res://Main.cs
 res://Scenes/Game.tscn
 res://blocks1.tres
+res://Character.tscn
 res://Thing.tscn
 res://WeaponSprite.tscn
 res://World.tscn
-res://Character.tscn
+res://Weapon.tscn
+res://Weapon.cs
+res://Pistol.tscn
+res://Pistol.cs
