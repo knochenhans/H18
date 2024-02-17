@@ -10,6 +10,7 @@
 script = ExtResource("1_ih2j6")
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(0, -1)
 tile_set = ExtResource("2_70lmx")
 format = 2
 script = ExtResource("3_pprw1")

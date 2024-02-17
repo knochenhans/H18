@@ -3,12 +3,6 @@ using System;
 
 public partial class TileMap : Godot.TileMap
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-
-	}
-
 	public void LoadMap(string filePath)
 	{
 		using var hexFile = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
@@ -40,9 +34,10 @@ public partial class TileMap : Godot.TileMap
 
 	private Vector2I GetNextTile(Vector2I pos, int step)
 	{
-		var usedCells = GetUsedCells(0);
-		var cellIdx = usedCells.IndexOf(pos);
-		return usedCells[cellIdx + step];
+		var newPosX = (pos.X + step) % 16;
+		var newPosY = pos.Y + (pos.X + step) / 16;
+
+		return new Vector2I(newPosX, newPosY);
 	}
 
 	public void HitTile(Vector2I pos)

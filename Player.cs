@@ -5,111 +5,47 @@ public partial class Player : Character
 {
 	private Thing currentThing;
 
-	private static readonly int numSectors = 10;
-	private readonly float sectorSize = 2 * Mathf.Pi / numSectors;
-
-	// Check if a given radian value falls into a sector
-	public int GetSector(float radianValue)
-	{
-		// Ensure the radian value is within [0, 2*pi] range
-		radianValue = Mathf.Wrap(radianValue, 0, 2 * Mathf.Pi);
-
-		// Calculate which sector the radian value falls into
-		return Mathf.FloorToInt(radianValue / sectorSize);
-	}
-
 	public override void _Ready()
 	{
 		base._Ready();
+	}
+
+	public override void _Input(InputEvent @event)
+	{
+		if (Input.IsActionPressed("left"))
+			CharacterCurrentInput[(int)CharacterCurrentInputEnum.Left] = true;
+		else
+			CharacterCurrentInput[(int)CharacterCurrentInputEnum.Left] = false;
+
+		if (Input.IsActionPressed("right"))
+			CharacterCurrentInput[(int)CharacterCurrentInputEnum.Right] = true;
+		else
+			CharacterCurrentInput[(int)CharacterCurrentInputEnum.Right] = false;
+
+		if (Input.IsActionPressed("up"))
+			CharacterCurrentInput[(int)CharacterCurrentInputEnum.Up] = true;
+		else
+			CharacterCurrentInput[(int)CharacterCurrentInputEnum.Up] = false;
+
+		if (Input.IsActionPressed("down"))
+			CharacterCurrentInput[(int)CharacterCurrentInputEnum.Down] = true;
+		else
+			CharacterCurrentInput[(int)CharacterCurrentInputEnum.Down] = false;
+
+		if (Input.IsActionJustPressed("fire"))
+			CharacterCurrentInput[(int)CharacterCurrentInputEnum.Fire] = true;
+		else
+			CharacterCurrentInput[(int)CharacterCurrentInputEnum.Fire] = false;
+
+		CurrentTargetPosition = GetGlobalMousePosition();
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
 
-		string animationSuffix = "";
-
-		switch (CharacterWeaponState)
-		{
-			case WeaponTypeEnum.None:
-				animationSuffix = "-empty";
-				break;
-			case WeaponTypeEnum.Pistol:
-				animationSuffix = "-pistol";
-				break;
-		}
-
-		var velocity = Velocity;
-
-		velocity.Y += (float)delta * Gravity;
-
-		if (Input.IsActionPressed("left"))
-		{
-			velocity.X = -WalkSpeed;
-
-			CharacterMovementState = CharacterMovementStateEnum.Walking;
-			AnimationSpriteNode.Play("walk-left" + animationSuffix);
-			orientation = -1;
-		}
-		else if (Input.IsActionPressed("right"))
-		{
-			velocity.X = WalkSpeed;
-
-			CharacterMovementState = CharacterMovementStateEnum.Walking;
-			AnimationSpriteNode.Play("walk-right" + animationSuffix);
-			orientation = 1;
-		}
-		else
-		{
-			CharacterMovementState = CharacterMovementStateEnum.Idle;
-
-			// if (orientation < 0)
-			// 	animationSprite.Play("idle-left");
-			// else
-			// 	animationSprite.Play("idle-right");
-
-			velocity.X = 0;
-		}
-
-		if (CharacterMovementState == CharacterMovementStateEnum.Idle)
-		{
-			var direction = (GetGlobalMousePosition() - Position).Normalized();
-			var angle = Math.PI + Math.Atan2(direction.X, direction.Y);
-
-			var sector = GetSector((float)angle);
-
-			if (sector >= 0 && sector < 5)
-			{
-				AnimationSpriteNode.Play("aim-left" + animationSuffix);
-				AnimationSpriteNode.Frame = 4 - sector;
-				// animationSprite.Offset = new Godot.Vector2(-4, -4);
-			}
-			else
-			{
-				AnimationSpriteNode.Play("aim-right" + animationSuffix);
-				AnimationSpriteNode.Frame = 4 - (sector - 5);
-				// animationSprite.Offset = new Godot.Vector2(0, -4);
-			}
-		}
-
-		Velocity = velocity;
-
-		// "MoveAndSlide" already takes delta time into account.
-		MoveAndSlide();
-
-		if (Input.IsActionJustPressed("fire"))
-		{
-			StartFiringCurrentWeapon(GetGlobalMousePosition());
-		}
-		else if (Input.IsActionJustReleased("fire"))
-		{
-			StopFiringCurrentWeapon();
-		}
-
 		if (Input.IsActionJustPressed("interact"))
-		{
 			TakeCurrentThing();
-		}
 	}
 
 	private void TakeCurrentThing()
